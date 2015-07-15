@@ -11,6 +11,7 @@ from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 
 from viper.common.out import *
 from viper.common.objects import File, Singleton
+from viper.common.config import Config
 from viper.core.project import __project__
 
 Base = declarative_base()
@@ -140,7 +141,7 @@ class Database:
     def __init__(self):
         db_path = os.path.join(__project__.get_path(), 'viper.db')
 
-        self.engine = create_engine('sqlite:///{0}'.format(db_path), poolclass=NullPool)
+        self.engine = create_engine(Config().viper.database, poolclass=NullPool)
         self.engine.echo = False
         self.engine.pool_timeout = 60
 
