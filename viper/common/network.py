@@ -3,6 +3,7 @@
 
 import socket
 import urllib2
+from viper.common.config import Config
 
 try:
     import socks
@@ -23,7 +24,7 @@ def download(url, tor=False):
             print_error("Missing dependency, install socks (`pip install SocksiPy`)")
             return None
 
-        socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, '127.0.0.1', 9050)
+        socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, Config().viper.tor_host, Config().viper.tor_port)
         socket.socket = socks.socksocket
         socket.create_connection = create_connection
 
