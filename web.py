@@ -32,13 +32,15 @@ from viper.common import network
 from viper.core.ui.commands import Commands
 from viper.common.constants import VIPER_ROOT
 
+from viper.common.config import Config
+
 ##
 # User Config
 ##
 
-web_port = 9090
-cuckoo_api = 'http://localhost:8090'
-cuckoo_web = 'http://localhost:9191'
+web_port = Config().viper.web_port
+cuckoo_api = Config().viper.cuckoo_api
+cuckoo_web = Config().viper.cuckoo_web
 
 ##
 # End User Config
