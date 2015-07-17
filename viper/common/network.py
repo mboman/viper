@@ -30,7 +30,7 @@ def download(url, tor=False):
 
     try:
         req = urllib2.Request(url)
-        req.add_header('User-agent', 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)')
+        req.add_header('User-agent', Config().viper.user_agent)
         res = urllib2.urlopen(req)
 
         data = res.read()
